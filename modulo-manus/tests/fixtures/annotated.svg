@@ -1,1 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg"><metadata id="modulo-graph">{"name":"tiny","nodes":[{"id":"s","type":"start","label":"Start"},{"id":"e","type":"end","label":"End"}],"edges":[{"id":"e1","source":"s","target":"e","label":""}]}</metadata></svg>
