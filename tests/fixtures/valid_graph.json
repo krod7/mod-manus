@@ -1,0 +1,19 @@
+{
+  "name": "Positive number",
+  "nodes": [
+    {"id": "start", "type": "start", "label": "Start"},
+    {"id": "input", "type": "input_output", "label": "INPUT n: number"},
+    {"id": "decision", "type": "decision", "label": "n > 0"},
+    {"id": "positive", "type": "input_output", "label": "OUTPUT n"},
+    {"id": "zero", "type": "input_output", "label": "OUTPUT 0"},
+    {"id": "end", "type": "end", "label": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "source": "start", "target": "input", "label": ""},
+    {"id": "e2", "source": "input", "target": "decision", "label": ""},
+    {"id": "e3", "source": "decision", "target": "positive", "label": "yes"},
+    {"id": "e4", "source": "decision", "target": "zero", "label": "no"},
+    {"id": "e5", "source": "positive", "target": "end", "label": ""},
+    {"id": "e6", "source": "zero", "target": "end", "label": ""}
+  ]
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modulo — Logic made visible</title>
+  <meta name="description" content="Turn flowcharts into executable code. Inspect every branch and trace every line in Modulo.">
+  <meta name="theme-color" content="#123b5d"><link rel="icon" href="./assets/modulo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;450;500;600&family=IBM+Plex+Sans:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./" aria-label="Modulo home"><img src="./assets/modulo.svg" alt="" width="32" height="32"><span>modulo<span class="brand-period">.</span></span><span class="beta">BETA</span></a>
+    <div class="workspace-id"><span class="workspace-mark">M</span><div>Personal workspace<small>LOCAL · PRIVATE BY DEFAULT</small></div></div>
+    <div class="side-label">WORKSPACE</div>
+    <button class="side-item active" id="workspace-button"><span data-icon="grid"></span> My flows <span class="side-count" id="project-count">1</span></button>
+    <button class="side-item" id="samples-button"><span data-icon="layers"></span> Example library <span class="new-tag">3</span></button>
+    <button class="side-item" id="guide-button"><span data-icon="book"></span> Drawing guide</button>
+    <div class="side-label project-label">YOUR FLOWS <button id="new-project" title="New blank flow" aria-label="New blank flow">+</button></div>
+    <nav id="project-list" aria-label="Saved flows"></nav>
+    <div class="sidebar-bottom"><div class="local-card"><span class="green-dot"></span> Your ideas stay yours<p>Flows are saved in this browser.<br>Export a copy to keep them.</p></div><button class="side-item" id="settings-button"><span data-icon="settings"></span> API connection <span class="connection-dot" id="connection-dot"></span></button><a class="side-item" href="https://github.com" target="_blank" rel="noreferrer"><span data-icon="github"></span> Built for GitHub Pages <span class="external-arrow">↗</span></a><div class="profile"><span class="avatar">Y</span><div>Your workspace<small>No account needed</small></div><span class="version">v0.1</span></div></div>
+  </aside>
+  <main>
+    <header class="topbar"><div class="breadcrumb"><span data-icon="folder"></span> My flows <span>/</span><strong id="breadcrumb-name">Number checker</strong></div><div class="top-actions"><span class="save-state" id="save-state"><span class="green-dot"></span> Saved locally</span><button class="button compact" id="export-project"><span data-icon="download"></span> Export flow</button></div></header>
+    <section class="workspace-heading"><div><div class="eyebrow">FROM DIAGRAM TO DEPLOYABLE</div><div class="heading-line"><h1 id="flow-title">Number checker</h1><button class="icon-button" id="rename-flow" title="Rename flow" aria-label="Rename flow"><span data-icon="edit"></span></button><span class="sample-badge" id="demo-badge">EXAMPLE FLOW</span></div><p>Your logic, translated. Every line has a point of origin.</p></div><button class="button primary" id="import-button"><span data-icon="upload"></span> Import flowchart <kbd>⌘ I</kbd></button></section>
+    <div class="pipeline" id="pipeline" aria-label="Conversion progress"><div class="pipeline-step done" data-stage="0"><span>1</span> Import</div><i>→</i><div class="pipeline-step done" data-stage="1"><span>2</span> Recognize</div><i>→</i><div class="pipeline-step done" data-stage="2"><span>3</span> Review & validate</div><i>→</i><div class="pipeline-step done" data-stage="3"><span>4</span> Generate code</div><div class="pipeline-status" id="pipeline-status"><span class="green-dot"></span> Ready to explore</div></div>
+    <div class="workbench">
+      <section class="diagram-panel panel" aria-label="Flowchart workspace">
+        <div class="panel-header"><div class="panel-title"><span class="panel-icon" data-icon="flow"></span><strong>Flowchart</strong><span class="muted mono" id="node-count">7 nodes</span></div><div class="panel-actions"><button class="icon-button" id="undo" aria-label="Undo edit" title="Undo"><span data-icon="undo"></span></button><button class="icon-button" id="redo" aria-label="Redo edit" title="Redo"><span data-icon="redo"></span></button><span class="divider"></span><button class="button small" id="edit-graph"><span data-icon="sliders"></span> Edit flow</button></div></div>
+        <div class="canvas-tabs"><button class="canvas-tab active" id="graph-tab">Reconstructed flow</button><button class="canvas-tab" id="source-tab">Original file</button><span class="canvas-label"><span class="tiny-dot"></span> INTERACTIVE CANVAS</span></div>
+        <div class="canvas" id="canvas"><svg id="graph-svg" role="img" aria-label="Interactive flowchart" viewBox="0 0 660 650"></svg><div id="source-preview" hidden></div><div class="canvas-mode"><button class="mode-button active" id="select-mode" title="Select and move nodes" aria-label="Select and move nodes"><span data-icon="cursor"></span></button><span class="mode-divider"></span><button class="mode-button" id="add-node" title="Add a process node" aria-label="Add a process node"><span data-icon="plus"></span></button><button class="mode-button" id="connect-mode" title="Connect two nodes" aria-label="Connect two nodes"><span data-icon="connect"></span></button><button class="mode-button" id="export-svg" title="Download flowchart SVG" aria-label="Download flowchart SVG"><span data-icon="image"></span></button></div><div class="zoom-controls"><button id="zoom-out" aria-label="Zoom out">−</button><span id="zoom-label">100%</span><button id="zoom-in" aria-label="Zoom in">+</button><span class="divider"></span><button id="fit-view" aria-label="Fit flowchart" title="Fit to canvas"><span data-icon="expand"></span></button></div><div class="canvas-caption">SELECT A NODE. FOLLOW ITS LOGIC.</div></div>
+        <div class="trace-hint"><span class="trace-symbol" data-icon="link"></span><div><strong>Nothing gets lost in translation.</strong><p>Click a node or code line to see the connection.</p></div><span class="trace-pill">TRACEABLE</span></div>
+      </section>
+      <section class="code-panel panel" aria-label="Generated code">
+        <div class="panel-header"><div class="panel-title"><span class="panel-icon" data-icon="code"></span><strong>Generated code</strong></div><div class="panel-actions"><select id="language" aria-label="Output language"><option value="python">Python</option><option value="javascript">JavaScript</option></select><button class="icon-button" id="copy-code" title="Copy code" aria-label="Copy code"><span data-icon="copy"></span></button><button class="icon-button" id="download-code" title="Download code" aria-label="Download code"><span data-icon="download"></span></button></div></div>
+        <div class="code-tabs"><button class="code-tab active" data-view="code"><span data-icon="code"></span> Source code</button><button class="code-tab" data-view="pseudo">Pseudocode</button><button class="code-tab" data-view="trace">Trace map <span id="trace-count">7</span></button></div>
+        <div class="code-filebar"><span class="file-dot"></span><span id="code-filename">number_checker.py</span><span class="generated-label" id="generated-label">GENERATED · DEMO</span></div>
+        <div id="code-content" class="code-content" aria-label="Generated source"></div>
+        <div class="code-footer"><span id="code-stats">Python · UTF-8</span><span><span class="green-dot"></span> <span id="compile-label">Graph validated</span></span></div>
+        <div class="run-bar"><div><strong>Put your logic to the test.</strong><span>Simulate the flow with your own inputs.</span></div><button class="button run-button" id="run-flow"><span data-icon="play"></span> Run flow</button></div>
+      </section>
+    </div>
+    <section class="bottom-bar"><div class="validation-summary" id="validation-summary"><span data-icon="check-circle"></span><strong>All paths connected</strong><span class="separator-dot">·</span><span>No validation errors</span></div><button id="validation-button" class="text-button">View validation <span data-icon="arrow-right"></span></button><button id="generate-button" class="button primary small"><span data-icon="spark"></span> Generate code</button></section>
+    <section id="inspector" class="inspector" hidden></section>
+    <footer class="workspace-footer"><span>VISUAL LOGIC. REAL CODE.</span><span>Browser-first <span> / </span> Open source <span> / </span> Made to be understood</span></footer>
+  </main>
+  <input type="file" id="file-input" accept=".json,.svg,.mmd,.mermaid,.txt,.drawio,.xml,.png,.jpg,.jpeg,.pdf" hidden>
+  <dialog id="modal"><div class="modal-header"><div><span class="eyebrow" id="modal-eyebrow">MODULO WORKSPACE</span><h2 id="modal-title">Import flowchart</h2></div><button class="icon-button" id="close-modal" aria-label="Close dialog"><span data-icon="x"></span></button></div><div id="modal-body"></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
