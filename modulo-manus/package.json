@@ -1,0 +1,1 @@
+{"name":"modulo","version":"0.1.0","private":true,"type":"module","description":"Browser-first flowchart to code compiler","scripts":{"test":"node --test tests/frontend.test.mjs","dev":"python3 run.py","static":"python3 -m http.server 3000 --bind 0.0.0.0 --directory frontend"},"engines":{"node":">=20"},"license":"MIT"}

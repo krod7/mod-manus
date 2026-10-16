@@ -1,0 +1,87 @@
+{
+  "name": "Countdown loop",
+  "description": "Follow a loop, update a variable, and trace the exit condition.",
+  "mark": "↻",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Start",
+      "x": 280,
+      "y": 40
+    },
+    {
+      "id": "read",
+      "type": "input",
+      "label": "INPUT n",
+      "x": 280,
+      "y": 132
+    },
+    {
+      "id": "test",
+      "type": "decision",
+      "label": "n > 0?",
+      "x": 280,
+      "y": 250
+    },
+    {
+      "id": "print",
+      "type": "output",
+      "label": "OUTPUT n",
+      "x": 280,
+      "y": 390
+    },
+    {
+      "id": "decrement",
+      "type": "process",
+      "label": "n = n - 1",
+      "x": 280,
+      "y": 480
+    },
+    {
+      "id": "end",
+      "type": "end",
+      "label": "End",
+      "x": 540,
+      "y": 390
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "start",
+      "target": "read",
+      "label": ""
+    },
+    {
+      "id": "e2",
+      "source": "read",
+      "target": "test",
+      "label": ""
+    },
+    {
+      "id": "e3",
+      "source": "test",
+      "target": "print",
+      "label": "Yes"
+    },
+    {
+      "id": "e4",
+      "source": "test",
+      "target": "end",
+      "label": "No"
+    },
+    {
+      "id": "e5",
+      "source": "print",
+      "target": "decrement",
+      "label": ""
+    },
+    {
+      "id": "e6",
+      "source": "decrement",
+      "target": "test",
+      "label": ""
+    }
+  ]
+}

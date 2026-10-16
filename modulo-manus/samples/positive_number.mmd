@@ -1,0 +1,7 @@
+flowchart TD
+S([Start]) --> I[/INPUT n/]
+I --> D{n > 0?}
+D -->|Yes| Y[OUTPUT "Positive"]
+D -->|No| N[OUTPUT "Not positive"]
+Y --> E([End])
+N --> E
